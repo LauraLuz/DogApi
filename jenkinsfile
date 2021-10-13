@@ -1,16 +1,6 @@
 pipeline{
     agent any
         stages {
-
-            stage('Build'){
-                echo 'Verificando Sistema Operacional...'
-                if (isUnix()) {
-                    echo 'Realizando o Build...'
-                    echo 'Bem vindo ao projeto DogAPI'
-                }else {
-                    echo 'O sistema operacional não é Linux...'
-                }
-            }
             stage('Opcao Ambiente'){
                 steps {
                     script {
