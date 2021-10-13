@@ -2,7 +2,7 @@ pipeline{
     agent any
         stages {
 
-            steps('Build'){
+            stage('Build'){
                 echo 'Verificando Sistema Operacional...'
                 if (isUnix()) {
                     echo 'Realizando o Build...'
