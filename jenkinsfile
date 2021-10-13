@@ -1,4 +1,4 @@
-pipeline {
+/* pipeline {
     agent any
     options {
         skipStagesAfterUnstable()
@@ -20,10 +20,8 @@ pipeline {
             }
         }
     }
-}
+} */
 
-
-/* 
 pipeline{
     agent any
         stages {
@@ -31,7 +29,7 @@ pipeline{
                 steps {
                     script {
                     env.AMBIENTE_BUILD = input message: 'Escolha o ambiente de build:', ok: 'Release!',
-                    parameters: [choice(name: 'AMBIENTE_BUILD', choices: 'Desenvolvimento\nHomologacao\nProducao', description: 'Qual é o ambiente a ser escolhido?')]
+                    parameters: [choice(name: 'AMBIENTE_BUILD', choices: 'Desenvolvimento\nProducao', description: 'Qual é o ambiente a ser escolhido?')]
                 }
                 echo "${env.AMBIENTE_BUILD}"
             }
@@ -44,14 +42,6 @@ pipeline{
                 echo 'O Deploy será realizado em DESENV'
             }
         }
-        stage ('Deploy em Homologacao'){
-            when {
-                expression { "${env.AMBIENTE_BUILD}" == 'Homologacao' }
-        }
-            steps {
-                echo 'O Deploy será realizado em HOMOLOG'
-            }
-        }
         stage ('Deploy em Produção'){
             when {
                 expression { "${env.AMBIENTE_BUILD}" == 'Producao' }
@@ -62,5 +52,3 @@ pipeline{
         }
     }
 }
-
- */
